@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width,
+                        initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>ByM Cod Scripting - Documentation - Annotations</title>
+
+                <link
+                        href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+                        rel="stylesheet">
+
+                <style type="text/css">
+                           * {
+                                    margin: 0;
+                                    padding: 0;
+                                    box-sizing: border-box;
+                           }
+
+                           body {
+                                    font-family: 'Lato', Arial, Helvetica, sans-serif;
+                                    background: #f4f4f4;
+                           }
+
+                           header {
+                                    margin: 0px;
+                                    padding: 20px 0px;
+                                    background: #333;
+                                    max-width: 100%;
+                                    width: 100%;
+                                    position: sticky;
+                                    top: 0px;
+                           }
+
+                           nav {
+                                    text-align: center;
+                                    color: white;
+                           }
+
+                           #search {
+                                    width: 100%;
+                                    max-width: 100%;
+                                    padding: 10px 15px;
+                                    background: white;
+                                    position: sticky;
+                                    top: 68px;
+                           }
+
+                           #search input[type=text] {
+                                    border: 1px #ddd solid;
+                                    width: 100%;
+                                    height: 40px;
+                                    font-size: 20px;
+                                    color: #333;
+                           }
+
+                           hr {
+                                    background: gray;
+                           }
+
+                           #results {
+                                    max-width: 100%;
+                                    width: 100%;
+                           }
+
+                           #results .result {
+                                    background: #eee;
+                                    margin: 10px 15px;
+                                    border: 1px #ddd solid;
+                                    padding: 15px;
+                           }
+
+                           #results .result .key {
+                                    font-weight: bold;
+                                    color: black;
+                           }
+
+                           #results .result .example {
+                                    background: white;
+                                    color: green;
+                                    margin: 5px 0px;
+                                    padding: 10px;
+                                    font-weight: bold;
+                                    font-size: 14px;
+                           }
+
+                           #results .result .parameters {
+                                    background: white;
+                                    margin: 5px 0px;
+                                    padding: 10px;
+                           }
+
+                           #results .result .parameters .parameter {
+                                    display: block;
+                                    padding: 5px 0px;
+                                    border-bottom: 1px solid #333;
+                           }
+
+                           #results .result .parameters .parameter:last-child {
+                                    border-bottom: none;
+                           }
+                  </style>
+                <script type="text/javascript">
+                        let documentation = [
+                        {
+                                        name: '@PlayerHP',
+                                        name_alternative: '@HP',
+                                        description: 'Returns the player health number',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@PlayerHP or @HP'
+                                },
+
+                                {
+                                        name: '@PlayerArmor',
+                                        name_alternative: '@AP',
+                                        description: 'Returns the player armor number',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@PlayerArmor or @AP'
+                                },
+
+                                {
+                                        name: '@PlayerMoney',
+                                        name_alternative: '@MN',
+                                        description: 'Returns the player money number',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@PlayerMoney or @MN'
+                                },
+
+                                {
+                                        name: '@Kills',
+                                        description: 'Returns the player number of kills',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@Kills'
+                                },
+
+                                {
+                                        name: '@Deaths',
+                                        description: 'Returns the player number of deaths',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@Deaths'
+                                },
+
+                                {
+                                        name: '@Ping',
+                                        description: 'Returns the player ping',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@Ping'
+                                },
+
+                                {
+                                        name: '@Godmode',
+                                        description: 'Returns 1 if the player has the god mode, 0 otherwise',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@Godmode'
+                                },
+
+                                {
+                                        name: '@Silent',
+                                        description: 'Returns 1 if the player has silent walking enabled, 0 otherwise',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@Silent'
+                                },
+
+                                {
+                                        name: '@Noclip',
+                                        description: 'Returns 1 if the player has no clip enabled, 0 otherwise',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@Noclip'
+                                },
+
+                                {
+                                        name: '@Team',
+                                        description: 'Returns 1 if the player is a terrorist, 2 if the player is counter terrorist, 3 if the player is spectator, 0 if player is unnasigned',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@Team'
+                                },
+
+                                {
+                                        name: '@KS',
+                                        description: 'Returns the number of player kill streaks',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@KS'
+                                },
+
+                                {
+                                        name: '@PlayerLevel',
+                                        name_alternative: '@Level',
+                                        description: 'Returns the player level',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@PlayerLevel or @Level'
+                                },
+
+                                {
+                                        name: '@PlayerXP',
+                                        name_alternative: '@XP',
+                                        description: 'Returns the player XP',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@PlayerXP or @XP'
+                                },
+
+                                {
+                                        name: '@PlayerGold',
+                                        name_alternative: '@Gold',
+                                        description: 'Returns the player Gold number',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@PlayerGold or @Gold'
+                                },
+
+                                {
+                                        name: '@PlayerClass',
+                                        name_alternative: '@Class',
+                                        description: 'Returns the player Class id',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@PlayerClass or @Class'
+                                },
+
+                                {
+                                        name: '@PlayerPerk',
+                                        name_alternative: '@Perk',
+                                        description: 'Returns the player Perk id',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@PlayerPerk or @Perk'
+                                },
+
+                                {
+                                        name: '@Classes',
+                                        description: 'Returns the number of registered Classes',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@Classes'
+                                },
+
+                                {
+                                        name: '@Perks',
+                                        description: 'Returns the number of registered Perks',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@Perks'
+                                },
+
+                                {
+                                        name: '@Hour',
+                                        description: 'Returns the current hour',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@Hour'
+                                },
+
+                                {
+                                        name: '@Minute',
+                                        description: 'Returns the current minute',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@Minute'
+                                },
+
+                                {
+                                        name: '@Second',
+                                        description: 'Returns the current second',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@Second'
+                                },
+                                
+                                {
+                                        name: '@Year',
+                                        description: 'Returns the current Year',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@Year'
+                                },
+
+                                {
+                                        name: '@Month',
+                                        description: 'Returns the current Month',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@Month'
+                                },
+
+                                {
+                                        name: '@Day',
+                                        description: 'Returns the current Day',
+                                        return_type: 'Integer',
+                                        parameters: [],
+                                        example: '@Day'
+                                },
+
+                                {
+                                        name: '@Random',
+                                        description: 'Returns the random number from 0 to first parameter, or random number from range',
+                                        return_type: 'Integer',
+                                        parameters: [
+                                                {
+                                                        name: 'Number 1',
+                                                        type: 'Integer or Annotation'
+                                                },
+
+                                                {
+                                                        name: 'Number 2',
+                                                        type: 'Integer or Annotation',
+                                                        optional: true
+                                                }
+                                        ],
+                                        example: '@Random(50) or @Random(1,100)'
+                                },
+
+                                {
+                                        name: '@Operation',
+                                        name_alternative: '@OP',
+                                        description: 'Does an operation on 2 numbers and returns the result',
+                                        return_type: 'Integer',
+                                        parameters: [
+                                                {
+                                                        name: 'Number 1',
+                                                        type: 'Integer or Annotation'
+                                                },
+
+                                                {
+                                                        name: 'Number 2',
+                                                        type: 'Integer or Annotation',
+                                                },
+
+                                                {
+                                                        name: 'Operation',
+                                                        type: 'String',
+                                                        note: 'Avaliable operations: +, -, *, /, %'
+                                                }
+                                        ],
+                                        example: '<p>Examples:</p><br /><ul><li>@OP(1,2,+)</li><li>@OP(@PVAR(some var),3,+)</li><li>@OP(10,2,%)</li></ul>'
+                                },
+
+                                {
+                                        name: '@PlayerVar',
+                                        name_alternative: '@PVAR',
+                                        description: 'Returns the value of player variable',
+                                        return_type: 'String',
+                                        parameters: [
+                                                {
+                                                        name: 'Variable Name',
+                                                        type: 'String'
+                                                }
+                                        ],
+                                        example: '@PlayerVar(some variable)'
+                                },
+
+                                {
+                                        name: '@ServerVar',
+                                        name_alternative: '@SVAR',
+                                        description: 'Returns the value of server variable',
+                                        return_type: 'String',
+                                        parameters: [
+                                                {
+                                                        name: 'Variable Name',
+                                                        type: 'String'
+                                                }
+                                        ],
+                                        example: '@SVAR(some variable)'
+                                },
+
+                                {
+                                        name: '@Time',
+                                        description: 'Returns the formatted time. See <a href="http://cplusplus.com/reference/clibrary/ctime/strftime.html" target="_blank">this link</a> for information about the time formatting.',
+                                        return_type: 'String',
+                                        parameters: [
+                                                {
+                                                        name: 'Format',
+                                                        type: 'String'
+                                                }
+                                        ],
+                                        example: '@Time(%d.%m.%Y %H:%M:%S)'
+                                },
+
+                                {
+                                        name: '@Name',
+                                        description: 'Returns the player name',
+                                        return_type: 'String',
+                                        parameters: [],
+                                        example: '@Name'
+                                },
+
+                                {
+                                        name: '@Steam',
+                                        description: 'Returns the player steam id',
+                                        return_type: 'String',
+                                        parameters: [],
+                                        example: '@Steam'
+                                },
+
+                                {
+                                        name: '@Ip',
+                                        description: 'Returns the player ip',
+                                        return_type: 'String',
+                                        parameters: [],
+                                        example: '@Ip'
+                                },
+
+                                {
+                                        name: '@ServerIp',
+                                        description: 'Returns the server ip',
+                                        return_type: 'String',
+                                        parameters: [],
+                                        example: '@ServerIp'
+                                },
+
+                                {
+                                        name: '@ServerName',
+                                        description: 'Returns the server name',
+                                        return_type: 'String',
+                                        parameters: [],
+                                        example: '@ServerName'
+                                }
+                        ];
+
+                        let REAN = text => text.replace(/@/g, "").trim();
+
+                        let dynamicSort = property => {
+                                let sortOrder = 1;
+
+                                if(property[0] === "-") {
+                                        sortOrder = -1;
+                                        property = property.substr(1);
+                                }
+
+                                return (a, b) => sortOrder == -1 ? REAN(b[property]).localeCompare(REAN(a[property])) : REAN(a[property]).localeCompare(REAN(b[property]));       
+                        }
+
+                        documentation.sort(dynamicSort("name"))
+
+                        let numberOfResults = 0;
+                        document.addEventListener('DOMContentLoaded', () => {
+                                let results = document.querySelector('#results');
+
+                                documentation.forEach(func => {
+                                        numberOfResults ++;
+
+                                        let result = document.createElement('div');
+                                        result.className = 'result';
+                                        result.id = `result-${numberOfResults}`;
+
+                                        let elementName = document.createElement('p');
+                                        elementName.innerHTML = `<span class="key">Name:</span> ${func.name}`;
+                                        result.appendChild(elementName);
+
+                                        if( func.name_alternative !== undefined ) {
+                                                let elementAlternativeName = document.createElement('p');
+                                                elementAlternativeName.innerHTML = `<span class="key">Alternative Name:</span> ${func.name_alternative}`;
+                                                result.appendChild(elementAlternativeName);
+                                        }
+                                             
+                                        let elementDescription = document.createElement('p');
+                                        elementDescription.innerHTML = `<span class="key">Description:</span> ${func.description}`;
+                                        result.appendChild(elementDescription);
+
+                                        let elementParametersParagraph = document.createElement('p');
+                                        elementParametersParagraph.innerHTML = `<span class="key">Parameters:</span>`;
+                                        result.appendChild(elementParametersParagraph);
+
+                                        let elementReturnTypeParagraph = document.createElement('p');
+                                        elementReturnTypeParagraph.innerHTML = `<span class="key">Return type:</span> ${func.return_type}`;
+                                        result.appendChild(elementReturnTypeParagraph);
+
+                                        let elementParameters = document.createElement('div');
+                                        elementParameters.className = 'parameters';
+
+                                        if(func.parameters !== undefined) {
+                                                func.parameters.forEach(parameter => {
+                                                        let elementParameter = document.createElement('div');
+                                                        elementParameter.className = 'parameter';
+
+                                                        let parameterName = document.createElement('p');
+                                                        parameterName.innerHTML = `<span class="key">Name:</span> ${parameter.name}`;
+                                                        elementParameter.appendChild(parameterName);
+
+                                                        let parameterType = document.createElement('p');
+                                                        parameterType.innerHTML = `<span class="key">Type:</span> ${parameter.type}`;
+                                                        elementParameter.appendChild(parameterType);
+
+                                                        if(parameter.default !== undefined) {     
+                                                                let parameterDefaultValue = document.createElement('p');
+                                                                parameterDefaultValue.innerHTML = `<span class="key">Default Value:</span> ${parameter.default}`;
+                                                                elementParameter.appendChild(parameterDefaultValue);
+                                                        }
+
+                                                        if(parameter.optional !== undefined && parameter.optional === true) {     
+                                                                let parameterDefaultValue = document.createElement('p');
+                                                                parameterDefaultValue.innerHTML = `<span class="key">This is an optional parameter</span>`;
+                                                                elementParameter.appendChild(parameterDefaultValue);
+                                                        }
+                                                               
+                                                        if(parameter.note !== undefined) {     
+                                                                let parameterNote = document.createElement('p');
+                                                                parameterNote.innerHTML = `<span class="key">Note:</span> ${parameter.note}`;
+                                                                elementParameter.appendChild(parameterNote);
+                                                        }
+
+                                                        elementParameters.appendChild(elementParameter);
+                                                });
+
+                                                if(func.parameters.length === 0) {
+                                                        let parameterNone = document.createElement('p');
+                                                        parameterNone.innerHTML = `<span class="key">No parameters</span>`;
+                                                        elementParameters.appendChild(parameterNone); 
+                                                }
+
+                                                result.appendChild(elementParameters);
+                                        }
+
+                                        let elementExample = document.createElement('p');
+                                        elementExample.innerHTML = `<span class="key">Example:</span> <div class="example">${func.example}</div>`;
+                                        result.appendChild(elementExample);
+
+                                        results.appendChild(result);
+                                });
+
+                                document.body.appendChild(results);
+
+                                document.querySelector('#filter').addEventListener('keyup', (event) => {
+                                        document.querySelectorAll('#results .result').forEach(result => {
+                                                const item = result.firstChild.textContent.replace(/Name: /g, '');
+                                                result.style.display = item.toLowerCase().includes(event.target.value.toLowerCase()) === true ? 'block' : 'none';
+                                        });
+                                });
+                        });
+                  </script>
+        </head>
+        <body>
+                <header>
+                        <nav>
+                                <h1>ByM Scripting Documentation - Annotations</h1>
+                        </nav>
+                </header>
+
+                <section id="search">
+                        <input type="text" placeholder="Search..." id="filter"
+                                />
+                </section>
+
+                <hr>
+
+                <section id="results">
+                </section>
+        </body>
+</html>

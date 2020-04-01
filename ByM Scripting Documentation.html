@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width,
+                        initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>ByM Cod Scripting - Documentation</title>
+
+                <link
+                        href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+                        rel="stylesheet">
+
+                <style type="text/css">
+                           * {
+                                    margin: 0;
+                                    padding: 0;
+                                    box-sizing: border-box;
+                           }
+
+                           body {
+                                    font-family: 'Lato', Arial, Helvetica, sans-serif;
+                                    background: #f4f4f4;
+                           }
+
+                           header {
+                                    margin: 0px;
+                                    padding: 20px 0px;
+                                    background: #333;
+                                    max-width: 100%;
+                                    width: 100%;
+                                    position: sticky;
+                                    top: 0px;
+                           }
+
+                           nav {
+                                    text-align: center;
+                                    color: white;
+                           }
+
+                           #search {
+                                    width: 100%;
+                                    max-width: 100%;
+                                    padding: 10px 15px;
+                                    background: white;
+                                    position: sticky;
+                                    top: 68px;
+                           }
+
+                           #search input[type=text] {
+                                    border: 1px #ddd solid;
+                                    width: 100%;
+                                    height: 40px;
+                                    font-size: 20px;
+                                    color: #333;
+                           }
+
+                           hr {
+                                    background: gray;
+                           }
+
+                           #results {
+                                    max-width: 100%;
+                                    width: 100%;
+                           }
+
+                           #results .result {
+                                    background: #eee;
+                                    margin: 10px 15px;
+                                    border: 1px #ddd solid;
+                                    padding: 15px;
+                           }
+
+                           #results .result .key {
+                                    font-weight: bold;
+                                    color: black;
+                           }
+
+                           #results .result .example {
+                                    background: white;
+                                    color: green;
+                                    margin: 5px 0px;
+                                    padding: 10px;
+                                    font-weight: bold;
+                                    font-size: 14px;
+                           }
+
+                           #results .result .parameters {
+                                    background: white;
+                                    margin: 5px 0px;
+                                    padding: 10px;
+                           }
+
+                           #results .result .parameters .parameter {
+                                    display: block;
+                                    padding: 5px 0px;
+                                    border-bottom: 1px solid #333;
+                           }
+
+                           #results .result .parameters .parameter:last-child {
+                                    border-bottom: none;
+                           }
+                  </style>
+                <script type="text/javascript">
+                        let documentation = [
+                                {
+                                        name: 'AddArmor',
+                                        name_alternative: 'AARM',
+                                        description: 'Add armor to player',
+                                        parameters: [
+                                                {
+                                                        name: 'Armor',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'AARM(120)'
+                                },
+
+                                {
+                                        name: 'AddHP',
+                                        name_alternative: 'AHP',
+                                        description: 'Add hp to player',
+                                        parameters: [
+                                                {
+                                                        name: 'HP',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'AddHP(120)'
+                                },
+
+                                {
+                                        name: 'AdditionalDamage',
+                                        name_alternative: 'AD',
+                                        description: 'Gives the player additional damage with the specified weapon',
+                                        parameters: [
+                                                {
+                                                        name: 'Weapon',
+                                                        type: 'String',
+                                                        note: 'To give the player ability with any weapon, just type: none'
+                                                },
+
+                                                {
+                                                        name: 'Damage',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'AdditionalDamage(m4a1,15)'
+                                },
+
+                                {
+                                        name: 'AddSpeed',
+                                        name_alternative: 'ASPD',
+                                        description: 'Adds player current speed',
+                                        parameters: [
+                                                {
+                                                        name: 'Speed',
+                                                        type: 'Float'
+                                                }
+                                        ],
+                                        example: 'AddSpeed(0.5)'
+                                },
+
+                                {
+                                        name: 'Aim',
+                                        name_alternative: 'Does not have an alrternative name',
+                                        description: 'Gives the player ability to shot in the head with the specified weapon and chance',
+                                        parameters: [
+                                                {
+                                                        name: 'Weapon',
+                                                        type: 'String',
+                                                        note: 'To give the player ability with any weapon, just type: none'
+                                                },
+
+                                                {
+                                                        name: 'Chance',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'Aim(ak47,7)'
+                                },
+
+                                {
+                                        name: 'AirStrikes',
+                                        name_alternative: 'ASTR',
+                                        description: 'Gives player specified number of AirStrikes',
+                                        parameters: [
+                                                {
+                                                        name: 'Number of AirStrikes',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'AirStrikes(3)'
+                                },
+
+                                {
+                                        name: 'AirStrikes',
+                                        name_alternative: 'ASTR',
+                                        description: 'Gives player specified ammount of AirStrikes',
+                                        parameters: [
+                                                {
+                                                        name: 'Number of AirStrikes',
+                                                        type: 'Integer'
+                                                }
+                                        ],
+                                        example: 'AirStrikes(3)'
+                                },
+
+                                {
+                                        name: 'AllWeaponsPickup',
+                                        name_alternative: 'AWPP',
+                                        description: 'Gives the player ability to pickup all weapons from the ground (Note: This is usles in the Death Match, since the weapons are removed)',
+                                        parameters: [],
+                                        example: 'AWPP'
+                                },
+
+                                {
+                                        name: 'AntiXray',
+                                        name_alternative: 'AXY',
+                                        description: 'Gives the player ability to avoid being seen by the players with the Xray ability',
+                                        parameters: [],
+                                        example: 'AntiXray'
+                                },
+
+                                {
+                                        name: 'BulletProof',
+                                        name_alternative: 'BP',
+                                        description: 'Gives the player ability to be resistant to first X bullters on each spawn',
+                                        parameters: [
+                                                {
+                                                        name: 'Number Of Bullets',
+                                                        type: 'Integer/Annotation',
+                                                        default: '3'
+                                                }
+                                        ],
+                                        example: 'BulletProof(3)'
+                                },
+
+                                {
+                                        name: 'BunnyHop',
+                                        name_alternative: 'BHOP',
+                                        description: 'Gives the player ability to bunnyhop',
+                                        parameters: [],
+                                        example: 'BHOP'
+                                },
+
+                                {
+                                        name: 'ChatCommand',
+                                        name_alternative: 'CCMD',
+                                        description: 'Allows you to execute the chat command for the specific player (PS: Do not use normal brackets, use Square ones, \'[\' and \']\'!!!)',
+                                        parameters: [
+                                                {
+                                                        name: 'Text',
+                                                        type: 'String',
+                                                        note: 'Maximum parameter text length is 63 characters.'
+                                                }
+                                        ],
+                                        example: 'CCMD(/class)'
+                                },
+
+                                {
+                                        name: 'ClientCommand',
+                                        name_alternative: 'CCC',
+                                        description: 'Allows you to execute the client command for the specific player (PS: Do not use normal brackets, use Square ones, \'[\' and \']\'!!!)',
+                                        parameters: [
+                                                {
+                                                        name: 'Text',
+                                                        type: 'String',
+                                                        note: 'Maximum parameter text length is 63 characters.'
+                                                }
+                                        ],
+                                        example: 'CCC(connect 192.193.168.1:27015)'
+                                },
+
+                                {
+                                        name: 'DecreaseInjuries',
+                                        name_alternative: 'DEIN',
+                                        description: 'Gives the player ability to decrease the injuries inflicted by the attacker',
+                                        parameters: [
+                                                {
+                                                        name: 'Damage',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'DEIN(5)'
+                                },
+
+                                {
+                                        name: 'DisableFallDamage',
+                                        name_alternative: 'DFLD',
+                                        description: 'Gives the player ability to not take damage when he falls',
+                                        parameters: [],
+                                        example: 'DisableFallDamage'
+                                },
+
+                                {
+                                        name: 'DoubleXP',
+                                        name_alternative: 'DXP',
+                                        description: 'Gives player ability to double xp',
+                                        parameters: [],
+                                        example: 'DoubleXP'
+                                },
+
+                                {
+                                        name: 'Dropper',
+                                        name_alternative: 'DP',
+                                        description: 'Gives the player ability to make enemies drop their weapons while shooting at them with the specified chance',
+                                        parameters: [
+                                                {
+                                                        name: 'Chance',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'Dropper(5)'
+                                },
+
+                                {
+                                        name: 'Dynamites',
+                                        name_alternative: 'DYN',
+                                        description: 'Gives player specified number of Dynamites',
+                                        parameters: [
+                                                {
+                                                        name: 'Number of Dynamites',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'Dynamites(3)'
+                                },
+
+                                {
+                                        name: 'ExplosionResistance',
+                                        name_alternative: 'ESR',
+                                        description: 'Gives player ability to be resistant to explosions',
+                                        parameters: [
+                                                {
+                                                        name: 'Chance',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'ESR(2)'
+                                },
+
+                                {
+                                        name: 'FastReload',
+                                        name_alternative: 'FR',
+                                        description: 'Gives the player ability to reload faster',
+                                        parameters: [],
+                                        example: 'FastReload'
+                                },
+
+                                {
+                                        name: 'Frostings',
+                                        name_alternative: 'FRS',
+                                        description: 'Gives player specified number of Frostings',
+                                        parameters: [
+                                                {
+                                                        name: 'Number of Frostings',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'Frostings(3)'
+                                },
+
+                                {
+                                        name: 'GiveWeapon',
+                                        name_alternative: 'GWP',
+                                        description: 'Gives player weapon (NOTE: You do not need "weapon_" prefix)',
+                                        parameters: [
+                                                {
+                                                        name: 'Weapon',
+                                                        type: 'String'
+                                                }
+                                        ],
+                                        example: 'GWP(deagle)'
+                                },
+
+                                {
+                                        name: 'GiveXP',
+                                        description: 'Gives player the XP',
+                                        parameters: [
+                                                {
+                                                        name: 'XP',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'GiveXP(1000)'
+                                },
+
+                                {
+                                        name: 'Gravity',
+                                        name_alternative: 'GRV',
+                                        description: 'Sets the player gravity to the spiecified ammout',
+                                        parameters: [
+                                                {
+                                                        name: 'Gravity',
+                                                        type: 'Float'
+                                                }
+                                        ],
+                                        example: 'Gravity(0.75)'
+                                },
+
+                                {
+                                        name: 'HsImmunity',
+                                        name_alternative: 'HSIMN',
+                                        description: 'Gives player the ability to be resistant to head shots',
+                                        parameters: [
+                                                {
+                                                        name: 'Chance',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'HSIMN(2)'
+                                },
+
+                                {
+                                        name: 'HsVulnerability',
+                                        name_alternative: 'HSV',
+                                        description: 'Allows you to give player the ability to be resistant to all shots except the head shots',
+                                        parameters: [],
+                                        example: 'HSV'
+                                },
+
+                                {
+                                        name: 'IF',
+                                        description: 'Enables flow controll in the scripting language. <br /><span style=\'color:red;font-weight:bold;font-size: 20px;\'>Used only for integer comparison!!!!!</span>',
+                                        parameters: [
+                                                {
+                                                        name: 'First Input Variable',
+                                                        type: 'Integer or Annotation'
+                                                },
+
+                                                {
+                                                        name: 'Second Input Variable',
+                                                        type: 'Integer or Annotation'
+                                                },
+
+                                                {
+                                                        name: 'Operation',
+                                                        type: 'String',
+                                                        note: 'Supported oprations: =, !=, >, <, >=, <='
+                                                },
+
+                                                {
+                                                        name: 'Function for true case',
+                                                        type: 'String',
+                                                        note: 'This function is executed if operation on first to parameters returns true'
+                                                },
+                                                
+                                                {
+                                                        name: 'Function for false case',
+                                                        type: 'String',
+                                                        note: 'This function is executed if operation on first to parameters returns false<br />This would be ELSE case in other programing languages',
+                                                        optional: true
+                                                }
+                                        ],
+                                        example: '<p>Examples:</p><br /><ul><li>IF(@HP,50,>,PrintChat(You have more than 50 HP),PrintChat(You have less than 50 HP))</li><li>IF(@Team,CT,=,GiveWeapon(usp),GiveWeapon(glock18))</li><li>IF(@Silent,1,!=,SilentWalking)</li></ul>'
+                                },
+
+                                {
+                                        name: 'IFSTR',
+                                        description: 'Enables flow controll in the scripting language. <br /><span style=\'color:red;font-weight:bold;font-size: 20px;\'>Used only for String comparison!!!!!</span>',
+                                        parameters: [
+                                                {
+                                                        name: 'First Input Variable',
+                                                        type: 'String or Annotation'
+                                                },
+                                                
+                                                {
+                                                        name: 'Second Input Variable',
+                                                        type: 'String or Annotation'
+                                                },
+
+                                                {
+                                                        name: 'Operation',
+                                                        type: 'String',
+                                                        note: 'Supported oprations: =, !='
+                                                },
+
+                                                {
+                                                        name: 'Function for true case',
+                                                        type: 'String',
+                                                        note: 'This function is executed if operation on first to parameters returns true'
+                                                },
+
+                                                {
+                                                        name: 'Function for false case',
+                                                        type: 'String',
+                                                        note: 'This function is executed if operation on first to parameters returns false<br />This would be ELSE case in other programing languages',
+                                                        optional: true
+                                                }
+                                        ],
+                                        example: '<p>Examples:</p><br /><ul><li>IFSTR(Something,Someting,=,PrintChat(Both strings are equal),PrintChat(Strings are not equal))</li><li>IF(@Name,milutinke,=,PrintChat(Player name is milutinke!),PrintChat(Player name is not milutinke!))</li></ul>'
+                                },
+
+                                {
+                                        name: 'IgnoreResistance',
+                                        name_alternative: 'IR',
+                                        description: 'Gives the player ability to ignore the instant kill resistance on other players',
+                                        parameters: [],
+                                        example: 'IgnoreResistance'
+                                },
+
+                                {
+                                        name: 'IgnoreResistance',
+                                        name_alternative: 'IR',
+                                        description: 'Gives the player ability to ignore the instant kill resistance on other players',
+                                        parameters: [],
+                                        example: 'IgnoreResistance'
+                                },
+
+                                {
+                                        name: 'Include',
+                                        name_alternative: 'INC',
+                                        description: 'Allows you to execute functions form another <strong>.ini<strong> file.<br />By the default function files are located in: <strong style=\'color:#3399ff;\'>\'addons/amxmodx/configs/ByM_CoD/Functions/\'</strong>, but you can change the location by setting a <strong style=\'color:#3399ff;\'>\'functions_path\'</strong> variable in <strong>Classes.ini</strong> or <strong>Perks.ini</strong>.<br />Read the comments in those file to learn how to set/change the variable.<br /><br />',
+                                        parameters: [
+                                                {
+                                                        name: 'Text',
+                                                        type: 'String',
+                                                        note: '<br /><strong>Maximum number of characters in file is 1024</strong><br /><strong>Maximum parameter text length is 63 characters.</strong><br /><span style=\'color:red;font-weight:bold;font-size: 20px;\'>Do not add .ini suffix, it is automatically appended!<br />Just use file name as the function (WITHOUT .ini)!</span>'
+                                                }
+                                        ],
+                                        example: 'Include(CustomFunctionName)'
+                                },
+
+                                {
+                                        name: 'InstantKill',
+                                        name_alternative: 'IK',
+                                        description: 'Gives the player ability to kill instantly with certain weapon with certain chance on certain button',
+                                        parameters: [
+                                                {
+                                                        name: 'Weapon',
+                                                        type: 'String',
+                                                        note: 'To give the player ability with any weapon, just type: none'
+                                                },
+                                                
+                                                {
+                                                        name: 'Damage',
+                                                        type: 'Integer/Annotation'
+                                                },
+
+                                                {
+                                                        name: 'Button',
+                                                        type: 'String',
+                                                        note: 'This is an optional parameter, you do not need to include it <strong>[Values can be: left or right]</strong><br>This parameter you can use for example, if you want to give the player an ability to kill with knife on left/right click'
+                                                }
+                                        ],
+                                        example: 'InstantKill(m4a1,15)'
+                                },
+
+                                {
+                                        name: 'InstantKillResistance',
+                                        name_alternative: 'IKR',
+                                        description: 'Gives the player ability to be resistant to instant kill',
+                                        parameters: [],
+                                        example: 'IKR'
+                                },
+
+                                {
+                                        name: 'JetPack',
+                                        name_alternative: 'JP',
+                                        description: 'Gives the player the Jet Pack or the Super Jet Pack',
+                                        parameters: [
+                                                {
+                                                        name: 'Type',
+                                                        type: 'String',
+                                                        default: 'ORDINARY',
+                                                        note: 'If you want to give the ordinary Jet Pack, you do not need to specify the parameter.'
+                                                }
+                                        ],
+                                        example: 'JetPack(SUPER)'
+                                },
+
+                                {
+                                        name: 'KillHP',
+                                        name_alternative: 'KHP',
+                                        description: 'Gives player the ability to gain additional HP for each kill',
+                                        parameters: [
+                                                {
+                                                        name: 'HP',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'KillHP(30)'
+                                },
+
+                                {
+                                        name: 'KillMoney',
+                                        name_alternative: 'KM',
+                                        description: 'Gives player the ability to gain additional money for each kill',
+                                        parameters: [
+                                                {
+                                                        name: 'Money',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'KillMoney(3000)'
+                                },
+
+                                {
+                                        name: 'Lightnings',
+                                        name_alternative: 'LGS',
+                                        description: 'Gives player specified number of Lightnings',
+                                        parameters: [
+                                                {
+                                                        name: 'Number of Lightnings',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'Lightnings(3)'
+                                },
+
+                                {
+                                        name: 'Magician',
+                                        name_alternative: 'MGC',
+                                        description: 'Gives the player ability to have the specified visibility with the specified weapon while crouching',
+                                        parameters: [
+                                                {
+                                                        name: 'Weapon',
+                                                        type: 'String',
+                                                        note: 'To give the player ability with any weapon, just type: none'
+                                                },
+                                                
+                                                {
+                                                        name: 'Visibility',
+                                                        type: 'Integer/Annotation',
+                                                        note: 'Visibility must be in the range 8-255!'
+                                                }
+                                        ],
+                                        example: 'Magician(none,25)'
+                                },
+
+                                {
+                                        name: 'Magnets',
+                                        name_alternative: 'MGS',
+                                        description: 'Gives player specified number of Magnets',
+                                        parameters: [
+                                                {
+                                                        name: 'Number of Magnets',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'Magnets(3)'
+                                },
+
+                                {
+                                        name: 'MedKits',
+                                        name_alternative: 'MKS',
+                                        description: 'Gives player specified number of Med Kits',
+                                        parameters: [
+                                                {
+                                                        name: 'Number of Med Kits',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'MedKits(3)'
+                                },
+
+                                {
+                                        name: 'MilitarySecret',
+                                        name_alternative: 'MS',
+                                        description: 'Gives the player ability to bling the enemies while shooting at them with the specified chance',
+                                        parameters: [
+                                                {
+                                                        name: 'Chance',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'MilitarySecret(7)'
+                                },
+
+                                {
+                                        name: 'Mines',
+                                        name_alternative: 'MIN',
+                                        description: 'Gives player specified number of Mines',
+                                        parameters: [
+                                                {
+                                                        name: 'Number of Mines',
+                                                        type: 'Integer'
+                                                },
+                                                
+                                                {
+                                                        name: 'Is mine instant kill [1 - yes | 0 - no]',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'Mines(3,1) - Give player 3 mines with instant kill ability'
+                                },
+
+                                {
+                                        name: 'ModelP',
+                                        description: 'Allows you to change the P model of the player weapon.',
+                                        parameters: [
+                                                {
+                                                        name: 'Weapon',
+                                                        type: 'String',
+                                                        note: 'Weapon name is written without <strong>weapon_</strong> prefix and model name is written without <strong>.mdl</strong> suffix and without folder names.<br /><span style=\'color:red;font-weight:bold;font-size: 20px;\'>Weapon models must be uploaded to the mode folder in models folder!!!</span>'
+                                                }
+                                        ],
+                                        example: 'ModelP(awp,p_awp_custom)'
+                                },
+
+                                {
+                                        name: 'ModelV',
+                                        description: 'Allows you to change the V model of the player weapon.',
+                                        parameters: [
+                                                {
+                                                        name: 'Weapon',
+                                                        type: 'String',
+                                                        note: 'Weapon name is written without <strong>weapon_</strong> prefix and model name is written without <strong>.mdl</strong> suffix and without folder names.<br /><span style=\'color:red;font-weight:bold;font-size: 20px;\'>Weapon models must be uploaded to the mode folder in models folder!!!</span>'
+                                                }
+                                        ],
+                                        example: 'ModelV(awp,v_awp_custom)'
+                                },
+
+                                {
+                                        name: 'MultiJump',
+                                        name_alternative: 'MJ',
+                                        description: 'Gives the player ability to jump multiple times, specified with the parameter',
+                                        parameters: [
+                                                {
+                                                        name: 'Number of Jumps',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'MultiJump(2)'
+                                },
+
+                                {
+                                        name: 'NapalmAttacks',
+                                        name_alternative: 'NATK',
+                                        description: 'Gives player specified number of Napalm Attacks',
+                                        parameters: [
+                                                {
+                                                        name: 'Number of Napalm Attacks',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'NapalmAttacks(3)'
+                                },
+
+                                {
+                                        name: 'NoRecoil',
+                                        name_alternative: 'NRC',
+                                        description: 'Player does not have recoil while shooting',
+                                        parameters: [],
+                                        example: 'NoRecoil'
+                                },
+
+                                {
+                                        name: 'NoReload',
+                                        name_alternative: 'NRL',
+                                        description: 'Gives the player unlimited clip',
+                                        parameters: [],
+                                        example: 'NoReload'
+                                },
+
+                                {
+                                        name: 'PlayerModel',
+                                        description: 'Allows you to change the Player model',
+                                        parameters: [
+                                                {
+                                                        name: 'Model',
+                                                        type: 'String',
+                                                        note: 'Model name is written without any folder name and without .mdl suffix (Example: awp)<br /><span style=\'color:red;font-weight:bold;font-size: 20px;\'>Model must be upladed in: models/player/&lt;MODEL NAME&gt;/&lt;MODEL NAME&gt;.mdl</span>'
+                                                }
+                                        ],
+                                        example: 'PlayerModel(vip)'
+                                },
+
+                                {
+                                        name: 'PoisonKits',
+                                        name_alternative: 'PKS',
+                                        description: 'Gives player specified number of Poison Kits',
+                                        parameters: [
+                                                {
+                                                        name: 'Number of Poison Kits',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'PoisonKits(3)'
+                                },
+
+                                {
+                                        name: 'PrintCenter',
+                                        name_alternative: 'CPRN',
+                                        description: 'Allows you to print a message to specific player screen center (PS: Do not use normal brackets, use Square ones, \'[\' and \']\'!!!)',
+                                        parameters: [
+                                                {
+                                                        name: 'Text',
+                                                        type: 'String',
+                                                        note: 'Maximum parameter text length is 63 characters.'
+                                                }
+                                        ],
+                                        example: 'CPRN(You have successfully done something!)'
+                                },
+
+                                {
+                                        name: 'PrintChat',
+                                        name_alternative: 'PCH',
+                                        description: 'Allows you to print a message to specific player chat (PS: Do not use normal brackets, use Square ones, \'[\' and \']\'!!!)',
+                                        parameters: [
+                                                {
+                                                        name: 'Text',
+                                                        type: 'String',
+                                                        note: 'Maximum parameter text length is 63 characters.'
+                                                }
+                                        ],
+                                        example: 'PrintChat(You have successfully done something!)'
+                                },
+
+                                {
+                                        name: 'PrintChatAll',
+                                        name_alternative: 'PCHA',
+                                        description: 'Allows you to print a message to the chat of all players (PS: Do not use normal brackets, use Square ones, \'[\' and \']\'!!!)',
+                                        parameters: [
+                                                {
+                                                        name: 'Text',
+                                                        type: 'String',
+                                                        note: 'Maximum parameter text length is 63 characters.'
+                                                }
+                                        ],
+                                        example: 'PrintChatAll(You have successfully done something!)'
+                                },
+
+                                {
+                                        name: 'PrintConsole',
+                                        name_alternative: 'PCN',
+                                        description: 'Allows you to print a message to specific player console (PS: Do not use normal brackets, use Square ones, \'[\' and \']\'!!!)',
+                                        parameters: [
+                                                {
+                                                        name: 'Text',
+                                                        type: 'String',
+                                                        note: 'Maximum parameter text length is 63 characters.'
+                                                }
+                                        ],
+                                        example: 'PrintConsole(You have successfully done something!)'
+                                },
+
+                                {
+                                        name: 'PrintConsoleAll',
+                                        name_alternative: 'PCNA',
+                                        description: 'Allows you to print a message to the console of all players (PS: Do not use normal brackets, use Square ones, \'[\' and \']\'!!!)',
+                                        parameters: [
+                                                {
+                                                        name: 'Text',
+                                                        type: 'String',
+                                                        note: 'Maximum parameter text length is 63 characters.'
+                                                }
+                                        ],
+                                        example: 'PrintConsoleAll(You have successfully done something!)'
+                                },
+
+                                {
+                                        name: 'PrintServer',
+                                        name_alternative: 'PRSC',
+                                        description: 'Allows you to print the message to server console (PS: Do not use normal brackets, use Square ones, \'[\' and \']\'!!!)',
+                                        parameters: [
+                                                {
+                                                        name: 'Text',
+                                                        type: 'String',
+                                                        note: 'Maximum parameter text length is 63 characters.'
+                                                }
+                                        ],
+                                        example: 'PrintServer(Some text)'
+                                },
+
+                                {
+                                        name: 'ReactiveArmor',
+                                        name_alternative: 'RARM',
+                                        description: 'Gives the player ability to repel the injuries inflicted by the attacker and return them to the attacker',
+                                        parameters: [
+                                                {
+                                                        name: 'Chance',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'RARM(5)'
+                                },
+
+                                {
+                                        name: 'Rockets',
+                                        name_alternative: 'RCS',
+                                        description: 'Gives player specified number of Rockets',
+                                        parameters: [
+                                                {
+                                                        name: 'Number of Rockets',
+                                                        type: 'Integer'
+                                                },
+                                                
+                                                {
+                                                        name: 'Rocket is instant kill - 0 or 1',
+                                                        type: 'Integer/Annotation'
+                                                },
+
+                                                {
+                                                        name: 'Rocket is trackig/chasing players - 0 or 1',
+                                                        type: 'Integer'
+                                                }
+                                        ],
+                                        example: 'Rockets(3,0,1) - Gives 3 rockets which track/chase players'
+                                },
+
+                                {
+                                        name: 'ServerCommand',
+                                        name_alternative: 'SCMD',
+                                        description: 'Allows you to execute the server command (PS: Do not use normal brackets, use Square ones, \'[\' and \']\'!!!)',
+                                        parameters: [
+                                                {
+                                                        name: 'Text',
+                                                        type: 'String',
+                                                        note: 'Maximum parameter text length is 63 characters.'
+                                                }
+                                        ],
+                                        example: 'SCMD(amx_map de_dust2)'
+                                },
+
+                                {
+                                        name: 'SetArmor',
+                                        name_alternative: 'SARM',
+                                        description: 'Sets player armor',
+                                        parameters: [
+                                                {
+                                                        name: 'Armor',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'SARM(120)'
+                                },
+
+                                {
+                                        name: 'SetClass',
+                                        description: 'Allows you to set player class',
+                                        parameters: [
+                                                {
+                                                        name: 'Class Id/Class Name from Lang/Annotation',
+                                                        type: 'Integer/String/Annotation',
+                                                        note: 'You can use class id from the mode, or you can use full class name from the lang or you can use annotation'
+                                                }
+                                        ],
+                                        example: '<p>Examples:</p><br /><ul><li>SetClass(@Random(@Classes))</li><li>SetClass(ML_SPY)</li></ul>'
+                                },
+
+                                {
+                                        name: 'SetHP',
+                                        name_alternative: 'SHP',
+                                        description: 'Sets player hp',
+                                        parameters: [
+                                                {
+                                                        name: 'HP',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'SetHP(120)'
+                                },
+
+                                {
+                                        name: 'SetPerk',
+                                        description: 'Allows you to set player perk',
+                                        parameters: [
+                                                {
+                                                        name: 'Perk Id/Perk Name from Lang/Annotation',
+                                                        type: 'Integer/String/Annotation',
+                                                        note: 'You can use Perk id from the mode, or you can use full Perk name from the lang or you can use annotation'
+                                                }
+                                        ],
+                                        example: '<p>Examples:</p><br /><ul><li>SetPerk(@Random(@Perks))</li><li>SetPerk(ML_HE_EXPERT)</li></ul>'
+                                },
+
+                                {
+                                        name: 'SetSpeed',
+                                        name_alternative: 'SSPD',
+                                        description: 'Sets player current speed',
+                                        parameters: [
+                                                {
+                                                        name: 'Speed',
+                                                        type: 'Float'
+                                                }
+                                        ],
+                                        example: 'SSPD(250.0)'
+                                },
+
+                                {
+                                        name: 'SilentWalking',
+                                        name_alternative: 'SW',
+                                        description: 'Gives the player ability to walk silently',
+                                        parameters: [],
+                                        example: 'SilentWalking'
+                                },
+
+                                {
+                                        name: 'SpawnAsEnemy',
+                                        name_alternative: 'SAE',
+                                        description: 'Gives the player ability to spawn in the enemy base with the speicified chance',
+                                        parameters: [
+                                                {
+                                                        name: 'Chance',
+                                                        type: 'Integer/Annotation',
+                                                        default: '8'
+                                                }
+                                        ],
+                                        example: 'SpawnAsEnemy(8)'
+                                },
+
+                                {
+                                        name: 'SetMoney',
+                                        name_alternative: 'SMN',
+                                        description: 'Sets the player money',
+                                        parameters: [
+                                                {
+                                                        name: 'Value',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'SetMoney(@OP(@PlayerMoney,500,+)) - Adds 500 money to the player'
+                                },
+
+                                {
+                                        name: 'SetNoClip',
+                                        name_alternative: 'SNCP',
+                                        description: 'Sets the player no clip',
+                                        parameters: [
+                                                {
+                                                        name: 'Value',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'SNCP(1)'
+                                },
+
+                                {
+                                        name: 'SubSpeed',
+                                        name_alternative: 'SUSPD',
+                                        description: 'Subtracts player current speed',
+                                        parameters: [
+                                                {
+                                                        name: 'Speed',
+                                                        type: 'Float'
+                                                }
+                                        ],
+                                        example: 'SUSPD(1.0)'
+                                },
+
+                                {
+                                        name: 'SetXP',
+                                        description: 'Sets the XP to player',
+                                        parameters: [
+                                                {
+                                                        name: 'XP',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'SetXP(50000)'
+                                },
+
+                                {
+                                        name: 'Teleport',
+                                        name_alternative: 'TP',
+                                        description: 'Gives the player ability to Teleport with the cooldown specified by the parameter',
+                                        parameters: [
+                                                {
+                                                        name: 'Time/Cooldown in seconds',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'Teleport(25)'
+                                },
+
+                                {
+                                        name: 'Vampire',
+                                        name_alternative: 'VP',
+                                        description: 'Gives the player vampire ability',
+                                        parameters: [
+                                                {
+                                                        name: 'Value',
+                                                        type: 'Integer/Annotation',
+                                                        optional: true,
+                                                        default: 100
+                                                }
+                                        ],
+                                        example: 'VP'
+                                },
+
+                                {
+                                        name: 'WallClimb',
+                                        name_alternative: 'WC',
+                                        description: 'Gives the player ability to climp on the walls',
+                                        parameters: [],
+                                        example: 'WallClimb'
+                                },
+
+                                {
+                                        name: 'WeaponInvisibility',
+                                        name_alternative: 'WI',
+                                        description: 'Gives the player ability to have the specified visibility with the specified weapon',
+                                        parameters: [
+                                                {
+                                                        name: 'Weapon',
+                                                        type: 'String',
+                                                        note: 'To give the player ability with any weapon, just type: none'
+                                                },
+                                                
+                                                {
+                                                        name: 'Visibility',
+                                                        type: 'Integer/Annotation',
+                                                        note: 'Visibility must be in the range 8-255!'
+                                                }
+                                        ],
+                                        example: 'WI(knife,8)'
+                                },
+
+                                {
+                                        name: 'WeaponResistance',
+                                        name_alternative: 'WRS',
+                                        description: 'Gives the player ability to be resistant to certain weapon with the certain chance',
+                                        parameters: [
+                                                {
+                                                        name: 'Weapon',
+                                                        type: 'String',
+                                                        note: 'To give the player ability with any weapon, just type: none'
+                                                },
+
+                                                {
+                                                        name: 'Chance',
+                                                        type: 'Integer/Annotation'
+                                                }
+                                        ],
+                                        example: 'WeaponResistance(knife,3)'
+                                },
+
+                                {
+                                        name: 'Xray',
+                                        name_alternative: 'XY',
+                                        description: 'Gives the player ability to see the invisible players',
+                                        parameters: [],
+                                        example: 'Xray'
+                                }
+                        ];
+
+                        let REAN = text => text.replace(/@/g, "").trim();
+
+                        let dynamicSort = property => {
+                                let sortOrder = 1;
+
+                                if(property[0] === "-") {
+                                        sortOrder = -1;
+                                        property = property.substr(1);
+                                }
+
+                                return (a, b) => sortOrder == -1 ? REAN(b[property]).localeCompare(REAN(a[property])) : REAN(a[property]).localeCompare(REAN(b[property]));       
+                        }
+
+                        documentation.sort(dynamicSort("name"));
+
+                        let numberOfResults = 0;
+                        document.addEventListener('DOMContentLoaded', () => {
+                                let results = document.querySelector('#results');
+
+                                documentation.forEach(func => {
+                                        numberOfResults ++;
+
+                                        let result = document.createElement('div');
+                                        result.className = 'result';
+                                        result.id = `result-${numberOfResults}`;
+
+                                        let elementName = document.createElement('p');
+                                        elementName.innerHTML = `<span class="key">Name:</span> ${func.name}`;
+                                        result.appendChild(elementName);
+
+                                        if( func.name_alternative !== undefined ) {
+                                                let elementAlternativeName = document.createElement('p');
+                                                elementAlternativeName.innerHTML = `<span class="key">Alternative Name:</span> ${func.name_alternative}`;
+                                                result.appendChild(elementAlternativeName);
+                                        }
+                                             
+                                        let elementDescription = document.createElement('p');
+                                        elementDescription.innerHTML = `<span class="key">Description:</span> ${func.description}`;
+                                        result.appendChild(elementDescription);
+
+                                        let elementParametersParagraph = document.createElement('p');
+                                        elementParametersParagraph.innerHTML = `<span class="key">Parameters:</span>`;
+                                        result.appendChild(elementParametersParagraph);
+
+                                        let elementParameters = document.createElement('div');
+                                        elementParameters.className = 'parameters';
+
+                                        if(func.parameters !== undefined) {
+                                                func.parameters.forEach(parameter => {
+                                                        let elementParameter = document.createElement('div');
+                                                        elementParameter.className = 'parameter';
+
+                                                        let parameterName = document.createElement('p');
+                                                        parameterName.innerHTML = `<span class="key">Name:</span> ${parameter.name}`;
+                                                        elementParameter.appendChild(parameterName);
+
+                                                        let parameterType = document.createElement('p');
+                                                        parameterType.innerHTML = `<span class="key">Type:</span> ${parameter.type}`;
+                                                        elementParameter.appendChild(parameterType);
+
+                                                        if(parameter.default !== undefined) {     
+                                                                let parameterDefaultValue = document.createElement('p');
+                                                                parameterDefaultValue.innerHTML = `<span class="key">Default Value:</span> ${parameter.default}`;
+                                                                elementParameter.appendChild(parameterDefaultValue);
+                                                        }
+
+                                                        if(parameter.optional !== undefined && parameter.optional === true) {     
+                                                                let parameterDefaultValue = document.createElement('p');
+                                                                parameterDefaultValue.innerHTML = `<span class="key">This is an optional parameter</span>`;
+                                                                elementParameter.appendChild(parameterDefaultValue);
+                                                        }
+                                                               
+                                                        if(parameter.note !== undefined) {     
+                                                                let parameterNote = document.createElement('p');
+                                                                parameterNote.innerHTML = `<span class="key">Note:</span> ${parameter.note}`;
+                                                                elementParameter.appendChild(parameterNote);
+                                                        }
+
+                                                        elementParameters.appendChild(elementParameter);
+                                                });
+
+                                                if(func.parameters.length === 0) {
+                                                        let parameterNone = document.createElement('p');
+                                                        parameterNone.innerHTML = `<span class="key">No parameters</span>`;
+                                                        elementParameters.appendChild(parameterNone); 
+                                                }
+
+                                                result.appendChild(elementParameters);
+                                        }
+
+                                        let elementExample = document.createElement('p');
+                                        elementExample.innerHTML = `<span class="key">Example:</span> <div class="example">${func.example}</div>`;
+                                        result.appendChild(elementExample);
+
+                                        results.appendChild(result);
+                                });
+
+                                document.body.appendChild(results);
+
+                                document.querySelector('#filter').addEventListener('keyup', (event) => {
+                                        document.querySelectorAll('#results .result').forEach(result => {
+                                                const item = result.firstChild.textContent.replace(/Name: /g, '');
+                                                result.style.display = item.toLowerCase().includes(event.target.value.toLowerCase()) === true ? 'block' : 'none';
+                                        });
+                                });
+                        });
+                  </script>
+        </head>
+        <body>
+                <header>
+                        <nav>
+                                <h1>ByM Scripting Documentation</h1>
+                        </nav>
+                </header>
+
+                <section id="search">
+                        <input type="text" placeholder="Search..." id="filter"
+                                />
+                </section>
+
+                <hr>
+
+                <section id="results">
+                </section>
+        </body>
+</html>
